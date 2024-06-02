@@ -1,4 +1,9 @@
-require ( './helpers.js' );
+// indexTest.js
+
+const chai = require('chai');
+const expect = chai.expect;
+
+const { scuberGreetingForFeet, ternaryCheckCity, switchOnCharmFromTip } = require('../index');
 
 describe('index.js', function () {
   describe('scuberGreetingForFeet()', function () {
@@ -6,11 +11,11 @@ describe('index.js', function () {
       expect(scuberGreetingForFeet(199)).to.equal('This one is on me!');
     });
 
-    it('charges 20 dollars for a distance between 400 and 2000 feet', function () {
+    it('charges twenty bucks for a distance over 400 feet and up to 2000 feet', function () {
       expect(scuberGreetingForFeet(1500)).to.equal('That will be twenty bucks.');
     });
 
-    it('charges 30 dollars for a distance over 2000 feet', function () {
+    it('charges thirty bucks for a distance over 2000 feet', function () {
       expect(scuberGreetingForFeet(2001)).to.equal('I will gladly take your thirty bucks.');
     });
 
@@ -24,22 +29,22 @@ describe('index.js', function () {
       expect(ternaryCheckCity('NYC')).to.equal('Ok, sounds good.');
     });
 
-    it('should return "No go." if the destination city is not NYC', function () {
-      expect(ternaryCheckCity('Pittsburgh')).to.equal('No go.');
+    it('returns "No go." if the city is not NYC', function () {
+      expect(ternaryCheckCity('Los Angeles')).to.equal('No go.');
     });
   });
 
   describe('switchOnCharmFromTip()', function () {
-    it('should return "Thank you so much." if the tip is generous', function () {
+    it('returns "Thank you so much." for generous tips', function () {
       expect(switchOnCharmFromTip('generous')).to.equal('Thank you so much.');
     });
 
-    it('should return "Thank you." if the tip is not as generous', function () {
+    it('returns "Thank you." for not as generous tips', function () {
       expect(switchOnCharmFromTip('not as generous')).to.equal('Thank you.');
     });
 
-    it('should return "Bye." if anything else', function () {
-      expect(switchOnCharmFromTip('thanks for everything')).to.equal('Bye.');
+    it('returns "Bye." for other tips', function () {
+      expect(switchOnCharmFromTip('other')).to.equal('Bye.');
     });
   });
 });
